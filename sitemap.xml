@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/10/22/python-switchcase-statements/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/10/22/python-switchcase-statements/</loc>
     <lastmod>2014-10-22T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/06/18/busy-busy/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/06/18/busy-busy/</loc>
     <lastmod>2014-06-18T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/01/30/automation/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/01/30/automation/</loc>
     <lastmod>2014-01-30T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/01/28/installing-a-lamp-server-on-rhel/</loc>
     <lastmod>2014-01-28T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/01/24/count-running-php-exe-processes/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/01/24/count-running-php-exe-processes/</loc>
     <lastmod>2014-01-24T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/</loc>
+    <loc>http://nshemonsky.github.io/webblog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/</loc>
     <lastmod>2014-01-14T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/blog/archives/</loc>
-    <lastmod>2015-02-23T10:02:35-05:00</lastmod>
+    <loc>http://nshemonsky.github.io/webblog/blog/archives/</loc>
+    <lastmod>2015-02-23T10:12:19-05:00</lastmod>
   </url>
   <url>
-    <loc>http://nshemonsky.github.io/blog/</loc>
-    <lastmod>2015-02-23T10:02:35-05:00</lastmod>
+    <loc>http://nshemonsky.github.io/webblog/</loc>
+    <lastmod>2015-02-23T10:12:19-05:00</lastmod>
   </url>
 </urlset>
