@@ -157,27 +157,27 @@ ask for any process and server as well making it extremely useful.</p>
 <span class='line-number'>59</span>
 </pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="k">Function</span> <span class="n">CountPHP</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="cm">&amp;lt;#</span>
-</span><span class='line'><span class="cm">    </span><span class="sd">.SYNOPSIS</span><span class="cm"></span>
-</span><span class='line'><span class="cm">    Returns count of running PHP processes on &amp;lt;Server&amp;gt;</span>
+</span><span class='line'><span class="p">&lt;</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">SYNOPSIS</span>
+</span><span class='line'>    <span class="n">Returns</span> <span class="n">count</span> <span class="n">of</span> <span class="n">running</span> <span class="n">PHP</span> <span class="n">processes</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="cm">    </span><span class="sd">.PARAMETER</span><span class="cm"> Path</span>
-</span><span class='line'><span class="cm">    Specifies the folder path.</span>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">Path</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">the</span> <span class="n">folder</span> <span class="n">path</span><span class="p">.</span>
 </span><span class='line'>
-</span><span class='line'><span class="cm">    </span><span class="sd">.PARAMETER</span><span class="cm"> Interval</span>
-</span><span class='line'><span class="cm">    Specifies the interval in seconds between running</span>
-</span><span class='line'><span class="cm">    Get-Process on &amp;lt;Server&amp;gt;.</span>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">Interval</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">the</span> <span class="n">interval</span> <span class="k">in</span> <span class="n">seconds</span> <span class="n">between</span> <span class="n">running</span>
+</span><span class='line'>    <span class="nb">Get-Process</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;.</span>
 </span><span class='line'>
-</span><span class='line'><span class="cm">    </span><span class="sd">.PARAMETER</span><span class="cm"> EndTime</span>
-</span><span class='line'><span class="cm">    Specifies when the script should stop running in the</span>
-</span><span class='line'><span class="cm">    format HH:mm</span>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">EndTime</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">when</span> <span class="n">the</span> <span class="n">script</span> <span class="n">should</span> <span class="n">stop</span> <span class="n">running</span> <span class="k">in</span> <span class="n">the</span>
+</span><span class='line'>    <span class="n">format</span> <span class="n">HH</span><span class="err">:</span><span class="n">mm</span>
 </span><span class='line'>
-</span><span class='line'><span class="cm">    </span><span class="sd">.EXAMPLE</span><span class="cm"></span>
-</span><span class='line'><span class="cm">    CountPHP -Path H:\ -Interval 60 -EndTime 14:00</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">EXAMPLE</span>
+</span><span class='line'>    <span class="n">CountPHP</span> <span class="n">-Path</span> <span class="n">H</span><span class="err">:</span><span class="p">\</span> <span class="n">-Interval</span> <span class="n">60</span> <span class="n">-EndTime</span> <span class="n">14</span><span class="err">:</span><span class="n">00</span>
 </span><span class='line'>
-</span><span class='line'><span class="cm">    Outputs count of php.exe on &amp;lt;Server&amp;gt; every 60 seconds</span>
-</span><span class='line'><span class="cm">    from run time until 2pm.</span>
-</span><span class='line'><span class="cm">#&amp;gt;</span>
+</span><span class='line'>    <span class="n">Outputs</span> <span class="n">count</span> <span class="n">of</span> <span class="n">php</span><span class="p">.</span><span class="n">exe</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">every</span> <span class="n">60</span> <span class="n">seconds</span>
+</span><span class='line'>    <span class="n">from</span> <span class="n">run</span> <span class="n">time</span> <span class="k">until</span> <span class="n">2pm</span><span class="p">.</span>
+</span><span class='line'><span class="p">&gt;</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="p">[</span><span class="k">CmdletBinding</span><span class="p">()]</span> <span class="k">Param</span><span class="p">(</span>
 </span><span class='line'>        <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>

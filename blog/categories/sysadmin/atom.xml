@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sysadmin | Nick Shemonsky's Blog]]></title>
   <link href="http://nshemonsky.github.io/blog/blog/categories/sysadmin/atom.xml" rel="self"/>
   <link href="http://nshemonsky.github.io/blog/"/>
-  <updated>2015-02-22T20:40:05-05:00</updated>
+  <updated>2015-02-22T20:48:42-05:00</updated>
   <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -90,14 +90,8 @@ Unrecognized operation.
     <link href="http://nshemonsky.github.io/blog/blog/2014/01/30/automation/"/>
     <updated>2014-01-30T00:00:00-05:00</updated>
     <id>http://nshemonsky.github.io/blog/blog/2014/01/30/automation</id>
-    <content type="html"><![CDATA[<center>
-  </p> <figure> <a href="http://xkcd.com/1319/" target="_blank"><img src='http://imgs.xkcd.com/comics/automation.png' alt='http://xkcd.com/1319/' /></a><br /> <figcaption><em>http://xkcd.com/1319/</em></figcaption><br /> </figure> 
-  
-  <p>
-    </center>
-
-
-<p>  </p></p>
+    <content type="html"><![CDATA[<p><img src="http://imgs.xkcd.com/comics/automation.png" alt="This about sums it up..." /><br/>
+<a href="http://xkcd.com/1319/">http://xkcd.com/1319/</a></p>
 ]]></content>
   </entry>
   
@@ -114,9 +108,10 @@ play with?</p>
 I&rsquo;d document the steps here for future reference. <!-- more --> In this case I
 chose to use the free tier version of RHEL. (Accordingly, the instructions below
 also apply to CentOS and other Red Hat based distros.) All of this is done as
-the default ec2-user.</p>
+ec2-user.</p>
 
-<p>After connecting to the instance, the first thing to do is get the system up to date.</p>
+<p>After connecting to the instance, the first thing to do is get the system up to
+date.</p>
 
 <pre><code>sudo yum update -y
 </code></pre>
@@ -213,7 +208,7 @@ ask for any process and server as well making it extremely useful.</p>
 
 <pre><code class="powershell CountPHP_Processes.ps1">Function CountPHP
 {
-&amp;lt;#
+&lt;
     .SYNOPSIS
     Returns count of running PHP processes on &amp;lt;Server&amp;gt;
 
@@ -233,7 +228,7 @@ ask for any process and server as well making it extremely useful.</p>
 
     Outputs count of php.exe on &amp;lt;Server&amp;gt; every 60 seconds
     from run time until 2pm.
-#&amp;gt;
+&gt;
 
     [CmdletBinding()] Param(
         [Parameter(Mandatory=$True)]
