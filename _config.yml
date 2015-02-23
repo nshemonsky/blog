@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://nshemonsky.github.io/blog
+url: http://blog.nshemonsky.com
 title: Nick Shemonsky's Blog
 subtitle: Tech and other miscellanea.
 author: Nick Shemonsky
@@ -32,7 +32,7 @@ source: source
 destination: public/blog
 plugins: plugins
 code_dir: downloads/code
-category_dir: blog/categories
+category_dir: categories
 markdown: rdiscount
 rdiscount:
   extensions:
@@ -91,7 +91,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: nickshemonsky
 disqus_show_comment_count: false
 
 # Google Analytics

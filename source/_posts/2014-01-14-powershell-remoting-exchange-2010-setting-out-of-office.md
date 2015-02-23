@@ -1,13 +1,14 @@
 ---
-title: Powershell Remoting / Exchange 2010
-author: nshemonsky
 layout: post
+title: Powershell Remoting / Exchange 2010
+date: 2014-01-14
 categories:
   - SysAdmin
 tags:
   - Exchange
   - PowerShell
 ---
+
 I was tasked with updating our user creation / tear down tool to set an out of
 office message for users when their account is disabled following their
 termination.

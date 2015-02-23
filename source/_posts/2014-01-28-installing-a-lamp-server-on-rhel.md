@@ -1,7 +1,7 @@
 ---
-title: Installing a LAMP Server on RHEL
-author: nshemonsky
 layout: post
+title: Installing a LAMP Server on RHEL
+date: 2014-01-28
 categories:
   - SysAdmin
 tags:

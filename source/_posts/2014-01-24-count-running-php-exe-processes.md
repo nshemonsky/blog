@@ -1,12 +1,13 @@
 ---
-title: Count running PHP processes with PowerShell
-author: nshemonsky
 layout: post
+title: Count running PHP processes with PowerShell
+date: 2014-01-24
 categories:
   - SysAdmin
 tags:
   - PowerShell
 ---
+
 We have a server that seems to end up going haywire every Friday afternoon,
 spawning countless PHP processes. Last week it spiked at over 500 but we didn't
 know when it began or ended specifically.

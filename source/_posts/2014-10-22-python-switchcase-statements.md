@@ -1,13 +1,15 @@
 ---
-title: Python switch/case statements
-author: nshemonsky
 layout: post
+title: Python switch/case statements
+date: 2014-10-22
+comments: true
 categories:
   - SysAdmin
 tags:
   - Python
   - Scripting
 ---
+
 Really, this post is about the complete lack thereof. While working on a script
 I needed to evaluate one of several potential arguments being passed in from
 the command line. Not wanting to write an if/elif/else nested 20 levels deep I

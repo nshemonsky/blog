@@ -1,7 +1,7 @@
 ---
-title: Automation
-author: nshemonsky
 layout: post
+title: Automation
+date: 2014-01-30
 categories:
   - SysAdmin
 tags:
