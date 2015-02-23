@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://blog.nickshemonsky.com/sitemap.xml 
+Sitemap: https://nshemonsky.github.io/blog/sitemap.xml 

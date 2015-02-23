@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: General | Nick Shemonsky's Blog]]></title>
-  <link href="https://blog.nickshemonsky.com/categories/general/atom.xml" rel="self"/>
-  <link href="https://blog.nickshemonsky.com/"/>
-  <updated>2015-02-23T10:19:12-05:00</updated>
-  <id>https://blog.nickshemonsky.com/</id>
+  <link href="https://nshemonsky.github.io/blog/categories/general/atom.xml" rel="self"/>
+  <link href="https://nshemonsky.github.io/blog/"/>
+  <updated>2015-02-23T10:21:41-05:00</updated>
+  <id>https://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Busy, Busy...]]></title>
-    <link href="https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy/"/>
+    <link href="https://nshemonsky.github.io/blog/blog/2014/06/18/busy-busy/"/>
     <updated>2014-06-18T00:00:00-04:00</updated>
-    <id>https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy</id>
+    <id>https://nshemonsky.github.io/blog/blog/2014/06/18/busy-busy</id>
     <content type="html"><![CDATA[<p>So after starting this blog at the beginning of the year it fell to the back
 burner in the last several months as lots of things have changed in my life.</p>
 
