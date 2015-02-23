@@ -192,90 +192,17 @@
   </header>
 
 
-  <div class="entry-content"><p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain some exposure to AWS and who can argue against having a free lab environment to play with?</p>
+  <div class="entry-content"><p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain
+some exposure to AWS and who can argue against having a free lab environment to
+play with?</p>
 
-<p>One of the first things I wanted to do was set up was a web server. I thought I&#8217;d document the steps here for future reference. In this case I chose to use the free tier version of RHEL. (Accordingly, the instructions below also apply to CentOS and other Red Hat based distros.) All of this is done as the default ec2-user.</p>
-
-<p>After connecting to the instance, the first thing to do is get the system up to date.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo yum update -y
-</pre>
-
-
-<p>Next up, install all packages and dependencies for Apache, MySQL and PHP. Also, install the php-mysql package for MySQL support in any PHP apps.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo yum groupinstall -y "Web Server" "MySQL Database Server" "MySQL Database Client" "PHP Support"
-sudo yum -y install php-mysql
-</pre>
-
-
-<p>If in your particular distro those names don&#8217;t match up you can search for the correct group name, e.g:</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo yum grouplist | grep MySQL
-</pre>
-
-
-<p>Now we can start Apache and configure it to start on boot.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo service httpd start
-sudo chkconfig httpd on
-</pre>
-
-
-<p>Then allow port 80 traffic. Open up /etc/sysconfig/iptables and add the following then restart iptables.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-</pre>
-
-
-
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo service iptables restart
-</pre>
-
-
-<p>At this point you should be able to connect to the public DNS address of your instance and see the Apache test page. If you can&#8217;t connect, make sure your AWS instance is in a security group allowing port 80.</p>
-
-<p>If you connected successfully, set up a quick PHP test</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo echo "<?php phpinfo(); ?>" > /var/www/html/testphp.php
-</pre>
-
-
-<p>Try connecting to <a href="http://your.public.dns/testphp.php.">http://your.public.dns/testphp.php.</a> You should see the PHP information page. If so, go ahead and remove the testphp file as no one needs to see that info about your system.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo rm /var/www/html/testphp.php
-</pre>
-
-
-<p>Next up, enable MySQL and set it to start on boot.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo service mysqld start
-sudo chkconfig mysqld on
-</pre>
-
-
-<p>Finally, run mysql_secure_installation to set your root MySQL password and remove all the insecure features.</p>
-
-<pre class="theme:dark-terminal lang:sh decode:true ">sudo mysql_secure_installation
-</pre>
-
-
-<p>The first question asks for the root password of your instance which by default is blank so enter through that, then set a root password for the MySQL root user.</p>
-
-<p>Now enter Y for the rest of the questions to:</p>
-
-<ul>
-<li>     Remove anonymous users</li>
-<li>     Disable remote root logins</li>
-<li>     Remove the test database</li>
-<li>     Reload all privilege tables and save changes</li>
-</ul>
-
-
-<p>That&#8217;s it! All done in just a few minutes. One last thing, don&#8217;t forget to set up permissions on /var/www/ accordingly so that ec2-user has access to work with any files in there.</p>
-</div>
+<p>One of the first things I wanted to do was set up was a web server. I thought
+I&rsquo;d document the steps here for future reference. </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/">Read on &rarr;</a>
+    </footer>
   
 
 
