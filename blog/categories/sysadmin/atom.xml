@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sysadmin | Nick Shemonsky's Blog]]></title>
   <link href="http://nshemonsky.github.io/blog/blog/categories/sysadmin/atom.xml" rel="self"/>
   <link href="http://nshemonsky.github.io/blog/"/>
-  <updated>2015-02-22T20:37:00-05:00</updated>
+  <updated>2015-02-22T20:40:05-05:00</updated>
   <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -286,7 +286,7 @@ termination.</p>
 <p>Initially, I thought this would be as simple as adding a function to run
 <code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
 out of office message I received the error: &lsquo;Operation is not valid due to the
-current state of the object. <!-- more --></p>
+current state of the object.&rsquo; <!-- more --></p>
 
 <p>Some google-fu led me to the fact that the way the Exchange commands were being
 loaded in the app is not supported in Exchange 2010. This method bypasses RBAC
@@ -297,11 +297,11 @@ script in a standard PoSH session:</p>
 <pre><code class="powershell Loading snap-in via remoting">$Snapin = "Microsoft.Exchange.Management.PowerShell.E2010"
 
 if(Get-PSSnapin -Name $Snapin -ErrorAction SilentlyContinue) {}
-elseif(Get-PSSnapin -Name $Snapin -Registered -ErrorAction SilentlyContinue){
-  Add-PSSnapin $Snapin
-  . $env:ExchangeInstallPath\bin\RemoteExchange.ps1
-  Connect-ExchangeServer -auto
-}
+elseif(Get-PSSnapin -Name $Snapin -Registered -ErrorAction SilentlyContinue){  
+  Add-PSSnapin $Snapin  
+  . $env:ExchangeInstallPath\bin\RemoteExchange.ps1  
+  Connect-ExchangeServer -auto  
+}  
 else{$SB.Text = "PSSnapin $Snapin not found"}
 </code></pre>
 
