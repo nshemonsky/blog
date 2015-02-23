@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://nshemonsky.github.io/webblog/sitemap.xml 
