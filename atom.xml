@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Nick Shemonsky's Blog]]></title>
+  <link href="https://blog.nickshemonsky.com/atom.xml" rel="self"/>
+  <link href="https://blog.nickshemonsky.com/"/>
+  <updated>2015-02-23T10:19:12-05:00</updated>
+  <id>https://blog.nickshemonsky.com/</id>
+  <author>
+    <name><![CDATA[Nick Shemonsky]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python Switch/case Statements]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/10/22/python-switchcase-statements/"/>
+    <updated>2014-10-22T00:00:00-04:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/10/22/python-switchcase-statements</id>
+    <content type="html"><![CDATA[<p>Really, this post is about the complete lack thereof. While working on a script
+I needed to evaluate one of several potential arguments being passed in from
+the command line. Not wanting to write an if/elif/else nested 20 levels deep I
+went about doing what seems to be a fairly standard workaround for implementing
+a switch statement in Python; I created a dictionary mapping to a function for
+each potential option.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s create a simple demonstration. You could save the below code as <em>math.py</em>.</p>
+
+<figure class='code'><figcaption><span>Python switch/case example script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2.7</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">operation</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">subtract</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">multiply</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">divide</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">error</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s">&quot;Unrecognized operation.&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">math_op</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s">&quot;add&quot;</span> <span class="p">:</span> <span class="n">add</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;subtract&quot;</span> <span class="p">:</span> <span class="n">subtract</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;multiply&quot;</span> <span class="p">:</span> <span class="n">multiply</span><span class="p">,</span>
+</span><span class='line'>  <span class="s">&quot;divide&quot;</span> <span class="p">:</span> <span class="n">divide</span><span class="p">,</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">math_op</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">error</span><span class="p">)()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When running this you&rsquo;ll pass in 2 arguments, the operation you want to perform;
+add, subtract, multiply, or divide, and a number to use. I&rsquo;ve also included an
+error function in case you pass in an operation that isn&rsquo;t supported. I&rsquo;m using
+the dictionary get method to handle finding the appropriate operation and
+defaulting to error if it&rsquo;s not found.</p>
+
+<figure class='code'><figcaption><span>Running the script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./math.py add 3
+</span><span class='line'>6
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>./math.py multiply 3
+</span><span class='line'>9
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>./math.py divide 3
+</span><span class='line'>1
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>./math.py subtract 3
+</span><span class='line'>0
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>./math.py foo 3
+</span><span class='line'>Unrecognized operation.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Although this is quite simple, it comes in handy. I hope you find it useful.
+For some more elegant solutions, see the following:</p>
+
+<ul>
+<li><a href="http://code.activestate.com/recipes/410692/" title="Readable switch construction without lambdas or dictionaries">Readable switch construction without lambdas or dictionaries</a></li>
+<li><a href="http://code.activestate.com/recipes/410695/" title="Exception-based Switch-Case">Exception-based Switch-Case</a></li>
+<li><a href="http://code.activestate.com/recipes/181064/" title="Using a Dictionary in place of a 'switch' statement">Using a Dictionary in place of a switch statement</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Busy, Busy...]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy/"/>
+    <updated>2014-06-18T00:00:00-04:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy</id>
+    <content type="html"><![CDATA[<p>So after starting this blog at the beginning of the year it fell to the back
+burner in the last several months as lots of things have changed in my life.</p>
+
+<p>I started a new position just over a month ago where I will now get to focus on
+supporting cloud technologies, infrastructure as code and evangelizing devops
+methodologies. Exciting stuff and so far I&rsquo;m loving it.</p>
+
+<p>I also finally got around to finishing my MCSA on Windows Server 2008. Glad I
+got it done when I did because as I get up to speed in the new role, I certainly
+wouldn&rsquo;t have had time to do it.</p>
+
+<p>Now that I&rsquo;m getting back in the groove, I intend to start posting somewhat
+regularly and hope to put some stuff up regarding working with Chef shortly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Automation]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/01/30/automation/"/>
+    <updated>2014-01-30T00:00:00-05:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/01/30/automation</id>
+    <content type="html"><![CDATA[<p><img src="http://imgs.xkcd.com/comics/automation.png" alt="This about sums it up..." /><br/>
+<a href="http://xkcd.com/1319/">http://xkcd.com/1319/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing a LAMP Server on RHEL]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/01/28/installing-a-lamp-server-on-rhel/"/>
+    <updated>2014-01-28T00:00:00-05:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/01/28/installing-a-lamp-server-on-rhel</id>
+    <content type="html"><![CDATA[<p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain
+some exposure to AWS and who can argue against having a free lab environment to
+play with?</p>
+
+<p>One of the first things I wanted to do was set up was a web server. I thought
+I&rsquo;d document the steps here for future reference. <!-- more --> In this case I
+chose to use the free tier version of RHEL. (Accordingly, the instructions below
+also apply to CentOS and other Red Hat based distros.) All of this is done as
+ec2-user.</p>
+
+<p>After connecting to the instance, the first thing to do is get the system up to
+date.</p>
+
+<pre><code>sudo yum update -y
+</code></pre>
+
+<p>Next up, install all packages and dependencies for Apache, MySQL and PHP. Also,
+install the php-mysql package for MySQL support in any PHP apps.</p>
+
+<pre><code>sudo yum groupinstall -y "Web Server" "MySQL Database Server" "MySQL Database Client" "PHP Support"
+sudo yum -y install php-mysql
+</code></pre>
+
+<p>If in your particular distro those names don&rsquo;t match up you can search for
+the correct group name, e.g:</p>
+
+<pre><code>sudo yum grouplist | grep MySQL
+</code></pre>
+
+<p>Now we can start Apache and configure it to start on boot.</p>
+
+<pre><code>sudo service httpd start
+sudo chkconfig httpd on&lt;/pre&gt;
+</code></pre>
+
+<p>Then allow port 80 traffic. Open up <code>/etc/sysconfig/iptables</code> and add the
+following then restart iptables.</p>
+
+<p><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</code></p>
+
+<pre><code>sudo service iptables restart
+</code></pre>
+
+<p>At this point you should be able to connect to the public DNS address of your
+instance and see the Apache test page. If you can&rsquo;t connect, make sure your AWS
+instance is in a security group allowing port 80.</p>
+
+<p>If you connected successfully, set up a quick PHP test</p>
+
+<pre><code>sudo echo "&lt;?php phpinfo(); ?&gt;" &gt; /var/www/html/testphp.php
+</code></pre>
+
+<p>Try connecting to <a href="http://your.public.dns/testphp.php.">http://your.public.dns/testphp.php.</a> You should see the PHP
+information page. If so, go ahead and remove the testphp file as no one needs to
+ see that info about your system.</p>
+
+<pre><code>sudo rm /var/www/html/testphp.php
+</code></pre>
+
+<p>Next up, enable MySQL and set it to start on boot.</p>
+
+<pre><code>sudo service mysqld start
+sudo chkconfig mysqld on
+</code></pre>
+
+<p>Finally, run <code>mysql_secure_installation</code> to set your root MySQL password and
+remove all the insecure features.</p>
+
+<pre><code>sudo mysql_secure_installation
+</code></pre>
+
+<p>The first question asks for the root password of your instance which by default
+is blank so enter through that, then set a root password for the MySQL root user.</p>
+
+<p>Now enter <code>Y</code> for the rest of the questions to:</p>
+
+<ul>
+<li> Remove anonymous users</li>
+<li> Disable remote root logins</li>
+<li> Remove the test database</li>
+<li> Reload all privilege tables and save changes</li>
+</ul>
+
+
+<p>That&rsquo;s it! All done in just a few minutes. One last thing, dont forget to set up
+permissions on <code>/var/www/</code> accordingly so that ec2-user has access to work with
+any files in there.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Count Running PHP Processes With PowerShell]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/01/24/count-running-php-exe-processes/"/>
+    <updated>2014-01-24T00:00:00-05:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/01/24/count-running-php-exe-processes</id>
+    <content type="html"><![CDATA[<p>We have a server that seems to end up going haywire every Friday afternoon,
+spawning countless PHP processes. Last week it spiked at over 500 but we didn&rsquo;t
+know when it began or ended specifically.</p>
+
+<!-- more -->
+
+
+<p>I threw together a quick PowerShell script to handle capturing the number of
+running processes on a specified interval. This could easily be modified to
+ask for any process and server as well making it extremely useful.</p>
+
+<figure class='code'><figcaption><span>CountPHP_Processes.ps1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="k">Function</span> <span class="n">CountPHP</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">&lt;</span>
+</span><span class='line'>    <span class="p">.</span><span class="n">SYNOPSIS</span>
+</span><span class='line'>    <span class="n">Returns</span> <span class="n">count</span> <span class="n">of</span> <span class="n">running</span> <span class="n">PHP</span> <span class="n">processes</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">Path</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">the</span> <span class="n">folder</span> <span class="n">path</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">Interval</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">the</span> <span class="n">interval</span> <span class="k">in</span> <span class="n">seconds</span> <span class="n">between</span> <span class="n">running</span>
+</span><span class='line'>    <span class="nb">Get-Process</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;.</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">.</span><span class="k">PARAMETER</span> <span class="n">EndTime</span>
+</span><span class='line'>    <span class="n">Specifies</span> <span class="n">when</span> <span class="n">the</span> <span class="n">script</span> <span class="n">should</span> <span class="n">stop</span> <span class="n">running</span> <span class="k">in</span> <span class="n">the</span>
+</span><span class='line'>    <span class="n">format</span> <span class="n">HH</span><span class="err">:</span><span class="n">mm</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">.</span><span class="n">EXAMPLE</span>
+</span><span class='line'>    <span class="n">CountPHP</span> <span class="n">-Path</span> <span class="n">H</span><span class="err">:</span><span class="p">\</span> <span class="n">-Interval</span> <span class="n">60</span> <span class="n">-EndTime</span> <span class="n">14</span><span class="err">:</span><span class="n">00</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Outputs</span> <span class="n">count</span> <span class="n">of</span> <span class="n">php</span><span class="p">.</span><span class="n">exe</span> <span class="n">on</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">every</span> <span class="n">60</span> <span class="n">seconds</span>
+</span><span class='line'>    <span class="n">from</span> <span class="n">run</span> <span class="n">time</span> <span class="k">until</span> <span class="n">2pm</span><span class="p">.</span>
+</span><span class='line'><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">[</span><span class="k">CmdletBinding</span><span class="p">()]</span> <span class="k">Param</span><span class="p">(</span>
+</span><span class='line'>        <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>
+</span><span class='line'>        <span class="p">[</span><span class="n">ValidateScript</span><span class="p">({</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$_</span> <span class="p">})]</span>
+</span><span class='line'>        <span class="no">[String]</span> <span class="nv">$Path</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>
+</span><span class='line'>        <span class="no">[Int32]</span> <span class="nv">$Interval</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>
+</span><span class='line'>        <span class="no">[String]</span> <span class="nv">$EndTime</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">Do</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c">#Get the current time</span>
+</span><span class='line'>        <span class="nv">$Time</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="no">[String]</span> <span class="nv">$Filename</span> <span class="p">=</span> <span class="s2">&quot;PHP_Count_&quot;</span> <span class="p">+</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$Time</span><span class="p">.</span><span class="n">Month</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">+</span> <span class="s2">&quot;_&quot;</span> <span class="p">+</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$Time</span><span class="p">.</span><span class="n">Day</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">+</span> <span class="s2">&quot;_&quot;</span> <span class="p">+</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$Time</span><span class="p">.</span><span class="n">Year</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">+</span> <span class="s2">&quot;.csv&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c">#Use join-path to add path to file name</span>
+</span><span class='line'>        <span class="no">[String]</span> <span class="nv">$FilePath</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="nv">$Path</span> <span class="nv">$FileName</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nv">$Count</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="n">php</span> <span class="n">-ComputerName</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="p">|</span> <span class="nb">Measure-Object</span><span class="p">).</span><span class="n">count</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="no">[pscustomobject]</span><span class="p">@{</span>
+</span><span class='line'>            <span class="n">Time</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">HH</span><span class="err">:</span><span class="n">mm</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">Count</span> <span class="p">=</span> <span class="nv">$Count</span>
+</span><span class='line'>        <span class="p">}</span> <span class="p">|</span> <span class="nb">Export-CSV</span> <span class="nv">$Filepath</span> <span class="n">-Append</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nb">Write-Verbose</span> <span class="s2">&quot;Saved PHP Count to $FilePath. Sleeping for $Interval seconds&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="nv">$Interval</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">While</span> <span class="p">((</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">HH</span><span class="err">:</span><span class="n">mm</span><span class="p">)</span> <span class="o">-lt</span> <span class="nv">$EndTime</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Powershell Remoting / Exchange 2010]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/"/>
+    <updated>2014-01-14T00:00:00-05:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office</id>
+    <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following their
+termination.</p>
+
+<p>Initially, I thought this would be as simple as adding a function to run
+<code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
+out of office message I received the error: &lsquo;Operation is not valid due to the
+current state of the object.&rsquo; <!-- more --></p>
+
+<p>Some google-fu led me to the fact that the way the Exchange commands were being
+loaded in the app is not supported in Exchange 2010. This method bypasses RBAC
+and in general, many commands just fail to work when a remote connection is
+established by force loading the snap-in and dot-sourcing the Remote Exchange
+script in a standard PoSH session:</p>
+
+<figure class='code'><figcaption><span>Loading snap-in via remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$Snapin</span> <span class="p">=</span> <span class="s2">&quot;Microsoft.Exchange.Management.PowerShell.E2010&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="nb">Get-PSSnapin</span> <span class="n">-Name</span> <span class="nv">$Snapin</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">)</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">elseif</span><span class="p">(</span><span class="nb">Get-PSSnapin</span> <span class="n">-Name</span> <span class="nv">$Snapin</span> <span class="n">-Registered</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">){</span>
+</span><span class='line'>  <span class="nb">Add-PSSnapin</span> <span class="nv">$Snapin</span>
+</span><span class='line'>  <span class="p">.</span> <span class="nv">$env:ExchangeInstallPath</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">RemoteExchange</span><span class="p">.</span><span class="n">ps1</span>
+</span><span class='line'>  <span class="nb">Connect-ExchangeServer</span> <span class="n">-auto</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">else</span><span class="p">{</span><span class="nv">$SB</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s2">&quot;PSSnapin $Snapin not found&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that being said, I&rsquo;m surprised the Exchange commands in the app have
+functioned up until this point without using remoting.</p>
+
+<p>I replaced the above code with the following:</p>
+
+<figure class='code'><figcaption><span>Loading snap-in without remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$s</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ConfigurationName</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Exchange</span> <span class="n">-ConnectionUri</span> <span class="n">http</span><span class="err">:</span><span class="p">//&lt;</span><span class="n">server</span><span class="p">&gt;/</span><span class="n">PowerShell</span><span class="p">/</span> <span class="n">-Authentication</span> <span class="n">Kerberos</span>
+</span><span class='line'><span class="nb">Import-PSSession</span> <span class="nv">$s</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, everything works as it should including the
+<code>Set-MailboxConfigurationAutoReply</code> command.</p>
+]]></content>
+  </entry>
+  
+</feed>

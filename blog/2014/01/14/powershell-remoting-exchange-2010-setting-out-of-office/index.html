@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Powershell Remoting / Exchange 2010 - Nick Shemonsky&#8217;s Blog</title>
+  <meta name="author" content="Nick Shemonsky">
+
+  
+  <meta name="description" content="I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/">
+  <link href="/blog/favicon.png" rel="icon">
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="Nick Shemonsky's Blog" type="application/atom+xml">
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/blog/">Nick Shemonsky&#8217;s Blog</a></h1>
+  
+    <h2>Tech and other miscellanea.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="blog.nickshemonsky.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Powershell Remoting / Exchange 2010</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-14'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following their
+termination.</p>
+
+<p>Initially, I thought this would be as simple as adding a function to run
+<code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
+out of office message I received the error: &lsquo;Operation is not valid due to the
+current state of the object.&rsquo; <!-- more --></p>
+
+<p>Some google-fu led me to the fact that the way the Exchange commands were being
+loaded in the app is not supported in Exchange 2010. This method bypasses RBAC
+and in general, many commands just fail to work when a remote connection is
+established by force loading the snap-in and dot-sourcing the Remote Exchange
+script in a standard PoSH session:</p>
+
+<figure class='code'><figcaption><span>Loading snap-in via remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$Snapin</span> <span class="p">=</span> <span class="s2">&quot;Microsoft.Exchange.Management.PowerShell.E2010&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="nb">Get-PSSnapin</span> <span class="n">-Name</span> <span class="nv">$Snapin</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">)</span> <span class="p">{}</span>
+</span><span class='line'><span class="k">elseif</span><span class="p">(</span><span class="nb">Get-PSSnapin</span> <span class="n">-Name</span> <span class="nv">$Snapin</span> <span class="n">-Registered</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">){</span>
+</span><span class='line'>  <span class="nb">Add-PSSnapin</span> <span class="nv">$Snapin</span>
+</span><span class='line'>  <span class="p">.</span> <span class="nv">$env:ExchangeInstallPath</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">RemoteExchange</span><span class="p">.</span><span class="n">ps1</span>
+</span><span class='line'>  <span class="nb">Connect-ExchangeServer</span> <span class="n">-auto</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">else</span><span class="p">{</span><span class="nv">$SB</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s2">&quot;PSSnapin $Snapin not found&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that being said, I&rsquo;m surprised the Exchange commands in the app have
+functioned up until this point without using remoting.</p>
+
+<p>I replaced the above code with the following:</p>
+
+<figure class='code'><figcaption><span>Loading snap-in without remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$s</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ConfigurationName</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Exchange</span> <span class="n">-ConnectionUri</span> <span class="n">http</span><span class="err">:</span><span class="p">//&lt;</span><span class="n">server</span><span class="p">&gt;/</span><span class="n">PowerShell</span><span class="p">/</span> <span class="n">-Authentication</span> <span class="n">Kerberos</span>
+</span><span class='line'><span class="nb">Import-PSSession</span> <span class="nv">$s</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, everything works as it should including the
+<code>Set-MailboxConfigurationAutoReply</code> command.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nick Shemonsky</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-01-14'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/sysadmin/'>sysadmin</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/" data-via="nshemonsky" data-counturl="https://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/blog/2014/01/24/count-running-php-exe-processes/" title="Next Post: Count running PHP processes with PowerShell">Count running PHP processes with PowerShell &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/blog/2014/10/22/python-switchcase-statements/">Python Switch/case Statements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/blog/2014/06/18/busy-busy/">Busy, Busy&#8230;</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/blog/2014/01/30/automation/">Automation</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/">Installing a LAMP Server on RHEL</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/blog/2014/01/24/count-running-php-exe-processes/">Count Running PHP Processes With PowerShell</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Nick Shemonsky -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nickshemonsky';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

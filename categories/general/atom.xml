@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: General | Nick Shemonsky's Blog]]></title>
+  <link href="https://blog.nickshemonsky.com/categories/general/atom.xml" rel="self"/>
+  <link href="https://blog.nickshemonsky.com/"/>
+  <updated>2015-02-23T10:19:12-05:00</updated>
+  <id>https://blog.nickshemonsky.com/</id>
+  <author>
+    <name><![CDATA[Nick Shemonsky]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Busy, Busy...]]></title>
+    <link href="https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy/"/>
+    <updated>2014-06-18T00:00:00-04:00</updated>
+    <id>https://blog.nickshemonsky.com/blog/2014/06/18/busy-busy</id>
+    <content type="html"><![CDATA[<p>So after starting this blog at the beginning of the year it fell to the back
+burner in the last several months as lots of things have changed in my life.</p>
+
+<p>I started a new position just over a month ago where I will now get to focus on
+supporting cloud technologies, infrastructure as code and evangelizing devops
+methodologies. Exciting stuff and so far I&rsquo;m loving it.</p>
+
+<p>I also finally got around to finishing my MCSA on Windows Server 2008. Glad I
+got it done when I did because as I get up to speed in the new role, I certainly
+wouldn&rsquo;t have had time to do it.</p>
+
+<p>Now that I&rsquo;m getting back in the groove, I intend to start posting somewhat
+regularly and hope to put some stuff up regarding working with Chef shortly.</p>
+]]></content>
+  </entry>
+  
+</feed>
