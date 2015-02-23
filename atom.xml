@@ -4,7 +4,7 @@
   <title><![CDATA[Nick Shemonsky's Blog]]></title>
   <link href="http://nshemonsky.github.io/blog/atom.xml" rel="self"/>
   <link href="http://nshemonsky.github.io/blog/"/>
-  <updated>2015-02-22T21:30:58-05:00</updated>
+  <updated>2015-02-22T21:32:57-05:00</updated>
   <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Just Enough Ruby for Chef]]></title>
-    <link href="http://nshemonsky.github.io/blog/blog/2015/02/22/just-enough-ruby-for-chef/"/>
-    <updated>2015-02-22T20:56:45-05:00</updated>
-    <id>http://nshemonsky.github.io/blog/blog/2015/02/22/just-enough-ruby-for-chef</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python Switch/case Statements]]></title>
