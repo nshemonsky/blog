@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sysadmin | Nick Shemonsky's Blog]]></title>
-  <link href="http://blog.nickshemonsky.com/blog/categories/sysadmin/atom.xml" rel="self"/>
-  <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-02-23T09:56:26-05:00</updated>
-  <id>http://blog.nickshemonsky.com/</id>
+  <link href="http://nshemonsky.github.io/blog/blog/categories/sysadmin/atom.xml" rel="self"/>
+  <link href="http://nshemonsky.github.io/blog/"/>
+  <updated>2015-02-23T09:59:33-05:00</updated>
+  <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Python Switch/case Statements]]></title>
-    <link href="http://blog.nickshemonsky.com/blog/2014/10/22/python-switchcase-statements/"/>
+    <link href="http://nshemonsky.github.io/blog/blog/2014/10/22/python-switchcase-statements/"/>
     <updated>2014-10-22T00:00:00-04:00</updated>
-    <id>http://blog.nickshemonsky.com/blog/2014/10/22/python-switchcase-statements</id>
+    <id>http://nshemonsky.github.io/blog/blog/2014/10/22/python-switchcase-statements</id>
     <content type="html"><![CDATA[<p>Really, this post is about the complete lack thereof. While working on a script
 I needed to evaluate one of several potential arguments being passed in from
 the command line. Not wanting to write an if/elif/else nested 20 levels deep I
@@ -97,9 +97,9 @@ For some more elegant solutions, see the following:</p>
   
   <entry>
     <title type="html"><![CDATA[Automation]]></title>
-    <link href="http://blog.nickshemonsky.com/blog/2014/01/30/automation/"/>
+    <link href="http://nshemonsky.github.io/blog/blog/2014/01/30/automation/"/>
     <updated>2014-01-30T00:00:00-05:00</updated>
-    <id>http://blog.nickshemonsky.com/blog/2014/01/30/automation</id>
+    <id>http://nshemonsky.github.io/blog/blog/2014/01/30/automation</id>
     <content type="html"><![CDATA[<p><img src="http://imgs.xkcd.com/comics/automation.png" alt="This about sums it up..." /><br/>
 <a href="http://xkcd.com/1319/">http://xkcd.com/1319/</a></p>
 ]]></content>
@@ -107,9 +107,9 @@ For some more elegant solutions, see the following:</p>
   
   <entry>
     <title type="html"><![CDATA[Installing a LAMP Server on RHEL]]></title>
-    <link href="http://blog.nickshemonsky.com/blog/2014/01/28/installing-a-lamp-server-on-rhel/"/>
+    <link href="http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/"/>
     <updated>2014-01-28T00:00:00-05:00</updated>
-    <id>http://blog.nickshemonsky.com/blog/2014/01/28/installing-a-lamp-server-on-rhel</id>
+    <id>http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel</id>
     <content type="html"><![CDATA[<p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain
 some exposure to AWS and who can argue against having a free lab environment to
 play with?</p>
@@ -202,9 +202,9 @@ any files in there.</p>
   
   <entry>
     <title type="html"><![CDATA[Count Running PHP Processes With PowerShell]]></title>
-    <link href="http://blog.nickshemonsky.com/blog/2014/01/24/count-running-php-exe-processes/"/>
+    <link href="http://nshemonsky.github.io/blog/blog/2014/01/24/count-running-php-exe-processes/"/>
     <updated>2014-01-24T00:00:00-05:00</updated>
-    <id>http://blog.nickshemonsky.com/blog/2014/01/24/count-running-php-exe-processes</id>
+    <id>http://nshemonsky.github.io/blog/blog/2014/01/24/count-running-php-exe-processes</id>
     <content type="html"><![CDATA[<p>We have a server that seems to end up going haywire every Friday afternoon,
 spawning countless PHP processes. Last week it spiked at over 500 but we didn&rsquo;t
 know when it began or ended specifically.</p>
@@ -281,9 +281,9 @@ ask for any process and server as well making it extremely useful.</p>
   
   <entry>
     <title type="html"><![CDATA[Powershell Remoting / Exchange 2010]]></title>
-    <link href="http://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/"/>
+    <link href="http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/"/>
     <updated>2014-01-14T00:00:00-05:00</updated>
-    <id>http://blog.nickshemonsky.com/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office</id>
+    <id>http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office</id>
     <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of
 office message for users when their account is disabled following their
 termination.</p>
