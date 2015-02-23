@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Nick Shemonsky&#8217;s Blog</title>
+  <title>Installing a LAMP Server on RHEL - Nick Shemonsky&#8217;s Blog</title>
   <meta name="author" content="Nick Shemonsky">
 
   
-  <meta name="description" content="Really, this post is about the complete lack thereof. While working on a script I needed to evaluate one of several potential arguments being passed &hellip;">
+  <meta name="description" content="Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain some exposure to AWS and who can argue against having a free lab &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nshemonsky.github.io/blog/">
+  <link rel="canonical" href="http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/">
   <link href="/blog/favicon.png" rel="icon">
   <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="Nick Shemonsky's Blog" type="application/atom+xml">
@@ -63,120 +63,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/blog/2014/10/22/python-switchcase-statements/">Python Switch/case Statements</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-22T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Really, this post is about the complete lack thereof. While working on a script I needed to evaluate one of several potential arguments being passed in from the command line. Not wanting to write an if/elif/else nested 20 levels deep I went about doing what seems to be a fairly standard workaround for implementing a switch statement in Python; I created a dictionary mapping to a function for each potential option.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/blog/2014/10/22/python-switchcase-statements/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/blog/2014/06/18/busy-busy/">Busy Busy&#8230;</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-18T00:00:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So after starting this blog at the beginning of the year it fell to the back burner in the last several months as lots of things have changed in my life.</p>
-
-<p>I started a new position just over a month ago where I will now get to focus on supporting cloud technologies, infrastructure as code and evangelizing devops methodologies. Exciting stuff and so far I&#8217;m loving it.</p>
-
-<p>I also finally got around to finishing my MCSA on Windows Server 2008. Glad I got it done when I did because as I get up to speed in the new role, I certainly wouldn&#8217;t have had time to do it.</p>
-
-<p>Now that I&#8217;m getting back in the groove, I intend to start posting somewhat regularly and hope to put some stuff up regarding working with Chef shortly.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/blog/2014/01/30/automation/">Automation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-30T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><center>
-  </p> <figure> <a href="http://xkcd.com/1319/" target="_blank"><img src='http://imgs.xkcd.com/comics/automation.png' alt='http://xkcd.com/1319/' /></a><br /> <figcaption><em>http://xkcd.com/1319/</em></figcaption><br /> </figure> 
-  
-  <p>
-    </center>
-
-
-<p>  </p></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/">Installing a LAMP Server on RHEL</a></h1>
+      <h1 class="entry-title">Installing a LAMP Server on RHEL</h1>
     
     
       <p class="meta">
@@ -192,7 +84,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain some exposure to AWS and who can argue against having a free lab environment to play with?</p>
+<div class="entry-content"><p>Recently, I signed up for the free tier of Amazon Web Services. I wanted to gain some exposure to AWS and who can argue against having a free lab environment to play with?</p>
 
 <p>One of the first things I wanted to do was set up was a web server. I thought I&#8217;d document the steps here for future reference. In this case I chose to use the free tier version of RHEL. (Accordingly, the instructions below also apply to CentOS and other Red Hat based distros.) All of this is done as the default ec2-user.</p>
 
@@ -275,88 +167,54 @@ sudo chkconfig mysqld on
 
 <p>That&#8217;s it! All done in just a few minutes. One last thing, don&#8217;t forget to set up permissions on /var/www/ accordingly so that ec2-user has access to work with any files in there.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/blog/2014/01/24/count-running-php-exe-processes/">Count Running PHP Processes With PowerShell</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-24T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>We have a server that seems to end up going haywire every Friday afternoon,
-spawning countless PHP processes. Last week it spiked at over 500 but we didn&rsquo;t
-know when it began or ended specifically.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/blog/2014/01/24/count-running-php-exe-processes/">Read on &rarr;</a>
-    </footer>
   
 
+<span class="byline author vcard">Posted by <span class="fn">nshemonsky</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
+
+
+
+
+<time class='entry-date' datetime='2014-01-28T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/blog/categories/sysadmin/'>sysadmin</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/">Powershell Remoting / Exchange 2010</a></h1>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/" data-via="nshemonsky" data-counturl="http://nshemonsky.github.io/blog/blog/2014/01/28/installing-a-lamp-server-on-rhel/" >Tweet</a>
+  
+  
+  
+</div>
+
     
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-14T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was tasked with updating our user creation / tear down tool to set an out of office message for users when their account is disabled following their termination.</p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/blog/2014/01/24/count-running-php-exe-processes/" title="Previous Post: Count running PHP processes with PowerShell">&laquo; Count running PHP processes with PowerShell</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/blog/2014/01/30/automation/" title="Next Post: Automation">Automation &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -392,6 +250,7 @@ know when it began or ended specifically.</p>
 
   
 </aside>
+
 
     </div>
   </div>
