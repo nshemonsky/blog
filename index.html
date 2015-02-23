@@ -265,9 +265,14 @@ know when it began or ended specifically.</p>
   </header>
 
 
-  <div class="entry-content"><p>I was tasked with updating our user creation / tear down tool to set an out of office message for users when their account is disabled following their termination.</p>
+  <div class="entry-content"><p>I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following their
+termination.</p>
 
-</div>
+<p>Initially, I thought this would be as simple as adding a function to run
+<code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
+out of office message I received the error: &lsquo;Operation is not valid due to the
+current state of the object. </div>
   
   
     <footer>

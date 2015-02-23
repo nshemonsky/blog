@@ -4,7 +4,7 @@
   <title><![CDATA[Nick Shemonsky's Blog]]></title>
   <link href="http://nshemonsky.github.io/blog/atom.xml" rel="self"/>
   <link href="http://nshemonsky.github.io/blog/"/>
-  <updated>2015-02-22T20:24:58-05:00</updated>
+  <updated>2015-02-22T20:33:17-05:00</updated>
   <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -242,10 +242,10 @@ is blank so enter through that, then set a root password for the MySQL root user
 <p>Now enter <code>Y</code> for the rest of the questions to:</p>
 
 <ul>
-<li>Remove anonymous users</li>
-<li>Disable remote root logins</li>
-<li>Remove the test database</li>
-<li>Reload all privilege tables and save changes</li>
+<li> Remove anonymous users</li>
+<li> Disable remote root logins</li>
+<li> Remove the test database</li>
+<li> Reload all privilege tables and save changes</li>
 </ul>
 
 
@@ -399,14 +399,20 @@ ask for any process and server as well making it extremely useful.</p>
     <link href="http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/"/>
     <updated>2014-01-14T00:00:00-05:00</updated>
     <id>http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office</id>
-    <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of office message for users when their account is disabled following their termination.</p>
+    <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following their
+termination.</p>
 
-<!-- more -->
+<p>Initially, I thought this would be as simple as adding a function to run
+<code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
+out of office message I received the error: &lsquo;Operation is not valid due to the
+current state of the object. <!-- more --></p>
 
-
-<p>Initially, I thought this would be as simple as adding a function to run Set-MailboxConfigurationAutoReply but every time the app tried to set a new out of office message I received the error: &#8220;Operation is not valid due to the current state of the object.</p>
-
-<p>Some google-fu led me to the fact that the way the Exchange commands were being loaded in the app is not supported in Exchange 2010. This method bypasses RBAC and in general, many commands just fail to work when a remote connection is established by force loading the snap-in and dot-sourcing the Remote Exchange script in a standard PoSH session:</p>
+<p>Some google-fu led me to the fact that the way the Exchange commands were being
+loaded in the app is not supported in Exchange 2010. This method bypasses RBAC
+and in general, many commands just fail to work when a remote connection is
+established by force loading the snap-in and dot-sourcing the Remote Exchange
+script in a standard PoSH session:</p>
 
 <figure class='code'><figcaption><span>Loading snap-in via remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -429,18 +435,22 @@ ask for any process and server as well making it extremely useful.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>With that being said, I&#8217;m surprised the Exchange commands in the app have functioned up until this point without using remoting.</p>
+<p>With that being said, I&rsquo;m surprised the Exchange commands in the app have
+functioned up until this point without using remoting.</p>
 
 <p>I replaced the above code with the following:</p>
 
 <figure class='code'><figcaption><span>Loading snap-in without remoting</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$s</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ConfigurationName</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Exchange</span> <span class="n">-ConnectionUri</span> <span class="n">http</span><span class="err">:</span><span class="p">//&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">server</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;/</span><span class="n">PowerShell</span><span class="p">/</span> <span class="n">-Authentication</span> <span class="n">Kerberos</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="nv">$s</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ConfigurationName</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Exchange</span> <span class="n">-ConnectionUri</span>
+</span><span class='line'><span class="n">http</span><span class="err">:</span><span class="p">//&lt;</span><span class="n">server</span><span class="p">&gt;/</span><span class="n">PowerShell</span><span class="p">/</span> <span class="n">-Authentication</span> <span class="n">Kerberos</span>
 </span><span class='line'><span class="nb">Import-PSSession</span> <span class="nv">$s</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Now, everything works as it should including the Set-MailboxConfigurationAutoReply command.</p>
+<p>Now, everything works as it should including the
+<code>Set-MailboxConfigurationAutoReply</code> command.</p>
 ]]></content>
   </entry>
   

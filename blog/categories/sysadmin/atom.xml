@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sysadmin | Nick Shemonsky's Blog]]></title>
   <link href="http://nshemonsky.github.io/blog/blog/categories/sysadmin/atom.xml" rel="self"/>
   <link href="http://nshemonsky.github.io/blog/"/>
-  <updated>2015-02-22T20:24:58-05:00</updated>
+  <updated>2015-02-22T20:33:17-05:00</updated>
   <id>http://nshemonsky.github.io/blog/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -182,10 +182,10 @@ is blank so enter through that, then set a root password for the MySQL root user
 <p>Now enter <code>Y</code> for the rest of the questions to:</p>
 
 <ul>
-<li>Remove anonymous users</li>
-<li>Disable remote root logins</li>
-<li>Remove the test database</li>
-<li>Reload all privilege tables and save changes</li>
+<li> Remove anonymous users</li>
+<li> Disable remote root logins</li>
+<li> Remove the test database</li>
+<li> Reload all privilege tables and save changes</li>
 </ul>
 
 
@@ -279,14 +279,20 @@ ask for any process and server as well making it extremely useful.</p>
     <link href="http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office/"/>
     <updated>2014-01-14T00:00:00-05:00</updated>
     <id>http://nshemonsky.github.io/blog/blog/2014/01/14/powershell-remoting-exchange-2010-setting-out-of-office</id>
-    <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of office message for users when their account is disabled following their termination.</p>
+    <content type="html"><![CDATA[<p>I was tasked with updating our user creation / tear down tool to set an out of
+office message for users when their account is disabled following their
+termination.</p>
 
-<!-- more -->
+<p>Initially, I thought this would be as simple as adding a function to run
+<code>Set-MailboxConfigurationAutoReply</code> but every time the app tried to set a new
+out of office message I received the error: &lsquo;Operation is not valid due to the
+current state of the object. <!-- more --></p>
 
-
-<p>Initially, I thought this would be as simple as adding a function to run Set-MailboxConfigurationAutoReply but every time the app tried to set a new out of office message I received the error: &#8220;Operation is not valid due to the current state of the object.</p>
-
-<p>Some google-fu led me to the fact that the way the Exchange commands were being loaded in the app is not supported in Exchange 2010. This method bypasses RBAC and in general, many commands just fail to work when a remote connection is established by force loading the snap-in and dot-sourcing the Remote Exchange script in a standard PoSH session:</p>
+<p>Some google-fu led me to the fact that the way the Exchange commands were being
+loaded in the app is not supported in Exchange 2010. This method bypasses RBAC
+and in general, many commands just fail to work when a remote connection is
+established by force loading the snap-in and dot-sourcing the Remote Exchange
+script in a standard PoSH session:</p>
 
 <pre><code class="powershell Loading snap-in via remoting">$Snapin = "Microsoft.Exchange.Management.PowerShell.E2010"
 
@@ -299,15 +305,18 @@ Connect-ExchangeServer -auto
 else{$SB.Text = "PSSnapin $Snapin not found"}
 </code></pre>
 
-<p>With that being said, I&#8217;m surprised the Exchange commands in the app have functioned up until this point without using remoting.</p>
+<p>With that being said, I&rsquo;m surprised the Exchange commands in the app have
+functioned up until this point without using remoting.</p>
 
 <p>I replaced the above code with the following:</p>
 
-<pre><code class="powershell Loading snap-in without remoting">$s = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://&amp;lt;server&amp;gt;/PowerShell/ -Authentication Kerberos
+<pre><code class="powershell Loading snap-in without remoting">$s = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri
+http://&lt;server&gt;/PowerShell/ -Authentication Kerberos 
 Import-PSSession $s
 </code></pre>
 
-<p>Now, everything works as it should including the Set-MailboxConfigurationAutoReply command.</p>
+<p>Now, everything works as it should including the
+<code>Set-MailboxConfigurationAutoReply</code> command.</p>
 ]]></content>
   </entry>
   
