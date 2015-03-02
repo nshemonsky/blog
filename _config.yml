@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://blog.nshemonsky.com
+url: http://blog.nickshemonsky.com
 title: Nick Shemonsky's Blog
 subtitle: Tech and other miscellanea.
 author: Nick Shemonsky
@@ -16,7 +16,7 @@ description: A mostly tech-oriented blog with tips, personal projects, etc.
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /blog/atom.xml
+subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
@@ -65,8 +65,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 
 # Github repositories
 github_user: nshemonsky
-#github_repo_count: 0
-#github_show_profile_link: true
+github_repo_count: 0
+github_show_profile_link: true
 #github_skip_forks: true
 
 # Twitter
