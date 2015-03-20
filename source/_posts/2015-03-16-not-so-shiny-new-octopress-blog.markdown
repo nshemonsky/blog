@@ -8,7 +8,7 @@ categories: meta, octopress
 
 After much neglect, I am resurrecting my blog. It's been long overdue and after
 reading some inspirational posts elsewhere on the Internets, specifically 
-[On Blogging][] by [beerops][]. I've decided it was time.
+[On Blogging][] by [beerops][], I've decided it was time.
 
 In this reincarnation, I've switched from Wordpress to [Octopress][], mostly to
 simplify the posting process. With that decision came moving away from my 
