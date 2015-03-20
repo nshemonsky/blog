@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python Switch/case Statements - Nick Shemonsky</title>
+  <title>Not So Shiny New Octopress Blog! - Nick Shemonsky</title>
   <meta name="author" content="Nick Shemonsky">
 
   
-  <meta name="description" content="Really, this post is about the complete lack thereof. While working on a script
-I needed to evaluate one of several potential arguments being passed &hellip;">
+  <meta name="description" content="After much neglect, I am resurrecting my blog. It&rsquo;s been long overdue and after
+reading some inspirational posts elsewhere on the Internets, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ I needed to evaluate one of several potential arguments being passed &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.nickshemonsky.com/2014/10/22/python-switchcase-statements">
+  <link rel="canonical" href="http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="" rel="alternate" title="Nick Shemonsky" type="application/atom+xml">
@@ -96,7 +96,7 @@ I needed to evaluate one of several potential arguments being passed &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Python Switch/case Statements</h1>
+        <h1 class="entry-title">Not So Shiny New Octopress Blog!</h1>
       
     
     
@@ -106,7 +106,7 @@ I needed to evaluate one of several potential arguments being passed &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-10-22'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span></time>
+<time class='entry-date' datetime='2015-03-20T10:25:07-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span></time>
         
         
       </p>
@@ -114,123 +114,121 @@ I needed to evaluate one of several potential arguments being passed &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Really, this post is about the complete lack thereof. While working on a script
-I needed to evaluate one of several potential arguments being passed in from
-the command line. Not wanting to write an if/elif/else nested 20 levels deep I
-went about doing what seems to be a fairly standard workaround for implementing
-a switch statement in Python; I created a dictionary mapping to a function for
-each potential option.</p>
+<div class="entry-content"><p>After much neglect, I am resurrecting my blog. It&rsquo;s been long overdue and after
+reading some inspirational posts elsewhere on the Internets, specifically
+<a href="http://beero.ps/2015/02/08/on-blogging/">On Blogging</a> by <a href="https://twitter.com/beerops">beerops</a>. I&rsquo;ve decided it was time.</p>
 
-<!-- more -->
+<p>In this reincarnation, I&rsquo;ve switched from Wordpress to <a href="https://github.com/imathis/octopress">Octopress</a>, mostly to
+simplify the posting process. With that decision came moving away from my
+previous hosting provider as well. Both my main landing page of
+<a href="http://www.nickshemonsky.com">www.nickshemonsky.com</a> and <a href="http://blog.nickshemonsky.com">blog.nickshemonsky.com</a> are now hosted
+on github-pages.</p>
+
+<p>As originally intended, this blog will serve a few purposes.</p>
+
+<ol>
+<li>As a technical reference. Googling always works but sometimes I just need a
+place to take a quick note. Hopefully, these help someone else out down the
+line.</li>
+<li>As a public roadmap for mostly professional goings-on.</li>
+<li>As a place to comment on beers I&rsquo;ve sampled. At this point, I&rsquo;m well over
+500 and would like to start documenting my thoughts on what I&rsquo;ve tasted. If
+you&rsquo;re on <a href="https://untappd.com/user/nshemonsky">Untappd</a>, add me as a friend!</li>
+<li>As a place to rant, rave and offer commentary on whatever happens to be on my
+mind.</li>
+</ol>
 
 
-<p>Let&rsquo;s create a simple demonstration. You could save the below code as <em>math.py</em>.</p>
+<p>With the interest of #1 in mind from the list from above, I wanted to share the
+few quick mods I made to the Octopress configuration.</p>
 
-<figure class='code'><figcaption><span>Python switch/case example script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<h3>Removing the rss subscription icon</h3>
+
+<p>First, modify <code>_config.yml</code> removing <code>/atom.xml</code> from the the subscribe_rss
+line.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python2.7</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">operation</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">add</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">subtract</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">multiply</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">divide</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">error</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="s">&quot;Unrecognized operation.&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">math_op</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="s">&quot;add&quot;</span> <span class="p">:</span> <span class="n">add</span><span class="p">,</span>
-</span><span class='line'>  <span class="s">&quot;subtract&quot;</span> <span class="p">:</span> <span class="n">subtract</span><span class="p">,</span>
-</span><span class='line'>  <span class="s">&quot;multiply&quot;</span> <span class="p">:</span> <span class="n">multiply</span><span class="p">,</span>
-</span><span class='line'>  <span class="s">&quot;divide&quot;</span> <span class="p">:</span> <span class="n">divide</span><span class="p">,</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">print</span> <span class="n">math_op</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">error</span><span class="p">)()</span>
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'># RSS / Email (optional) subscription links (change if using something like Feedburner)
+</span><span class='line'>subscribe_rss:
+</span><span class='line'>subscribe_email:
+</span><span class='line'># RSS feeds can list your email address if you like
+</span><span class='line'>email:</span></code></pre></td></tr></table></div></figure>
 
 
-<p>When running this you&rsquo;ll pass in 2 arguments, the operation you want to perform;
-add, subtract, multiply, or divide, and a number to use. I&rsquo;ve also included an
-error function in case you pass in an operation that isn&rsquo;t supported. I&rsquo;m using
-the dictionary get method to handle finding the appropriate operation and
-defaulting to error if it&rsquo;s not found.</p>
+<p>Then modify <code>source/_includes/navigation.html</code> to conditionally include/exclude
+the rss icon.</p>
 
-<figure class='code'><figcaption><span>Running the script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./math.py add 3
-</span><span class='line'>6
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>./math.py multiply 3
-</span><span class='line'>9
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>./math.py divide 3
-</span><span class='line'>1
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>./math.py subtract 3
-</span><span class='line'>0
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>./math.py foo 3
-</span><span class='line'>Unrecognized operation.
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if site.subscribe_rss %}
+</span><span class='line'>  &lt;ul class="subscribe" data-subscription="rss{% if site.subscribe_email %} email{% endif %}"&gt;
+</span><span class='line'>    ...
+</span><span class='line'>  &lt;/ul&gt;
+</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Although this is quite simple, it comes in handy. I hope you find it useful.
-For some more elegant solutions, see the following:</p>
+<h3>Modifying the date format for posts</h3>
+
+<p>The date format for posts can be adjusted via <code>source/_includes/post/date.html</code>.
+I prefer to not have the time listed for posts.</p>
+
+<p>Original:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if page.date %}{% capture time %}{{ page.date_time_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.date %}{% capture time %}{{ post.date_time_html }}{% endcapture %}{% endif %}
+</span><span class='line'>
+</span><span class='line'>{% if page.updated %}{% capture updated %}{{ page.date_time_updated_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.updated %}{% capture updated %}{{ post.date_time_updated_html }}{% endcapture %}{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Modified:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if page.date %}{% capture time %}{{ page.date_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.date %}{% capture time %}{{ post.date_html }}{% endcapture %}{% endif %}
+</span><span class='line'>
+</span><span class='line'>{% if page.updated %}{% capture updated %}{{ page.date_updated_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.updated %}{% capture updated %}{{ post.date_updated_html }}{% endcapture %}{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For additional date formatting options see: <a href="https://github.com/octopress/date-format">https://github.com/octopress/date-format</a></p>
+
+<h3>Removing the simple_search bar</h3>
+
+<p>The simple_search is controlled by the
+<code>{% if site.simple_search %}{% endif %}</code>  conditional in
+<code>source/_includes/navigation.html</code>.</p>
+
+<p>Removing the url from the simple_search field in <code>_config.yml</code> will remove the
+search bar.</p>
+
+<h3>Removing the default /blog directory</h3>
+
+<p>Octopress deploys archives to <code>/blog</code> by default. It can be removed using these
+steps:</p>
 
 <ul>
-<li><a href="http://code.activestate.com/recipes/410692/" title="Readable switch construction without lambdas or dictionaries">Readable switch construction without lambdas or dictionaries</a></li>
-<li><a href="http://code.activestate.com/recipes/410695/" title="Exception-based Switch-Case">Exception-based Switch-Case</a></li>
-<li><a href="http://code.activestate.com/recipes/181064/" title="Using a Dictionary in place of a 'switch' statement">Using a Dictionary in place of a switch statement</a></li>
+<li>Replace all occurences of <code>/blog</code> with <code>/</code> in <code>_config.yml</code></li>
+<li>Move <code>source/blog/archives</code> to <code>source/</code></li>
+<li>Delete <code>/blog</code></li>
+<li>Edit <code>source/_includes/custom/navigation.html</code>, replacing <code>/blog/archives</code> with <code>/archives</code></li>
+<li>Edit <code>source/index.html</code>, replacing <code>/blog/archives</code> with <code>/archives</code></li>
 </ul>
 
 </div>
@@ -255,13 +253,13 @@ For some more elegant solutions, see the following:</p>
 
 
 
-<time class='entry-date' datetime='2014-10-22'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span></time>
+<time class='entry-date' datetime='2015-03-20T10:25:07-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span></time>
       
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/sysadmin/'>sysadmin</a>
+    <a class='category' href='/categories/meta/'>meta,</a>, <a class='category' href='/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -270,7 +268,7 @@ For some more elegant solutions, see the following:</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.nickshemonsky.com/2014/10/22/python-switchcase-statements/" data-via="nshemonsky" data-counturl="http://blog.nickshemonsky.com/2014/10/22/python-switchcase-statements/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog/" data-via="nshemonsky" data-counturl="http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog/" >Tweet</a>
   
   
   
@@ -279,10 +277,8 @@ For some more elegant solutions, see the following:</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2014/06/18/busy-busy/" title="Previous Post: Busy, busy...">&laquo; Busy, busy&#8230;</a>
+        <a class="basic-alignment left" href="/2014/10/22/python-switchcase-statements/" title="Previous Post: Python switch/case statements">&laquo; Python switch/case statements</a>
       
-      
-        <a class="basic-alignment right" href="/2015/03/20/not-so-shiny-new-octopress-blog/" title="Next Post: Not So Shiny New Octopress Blog!">Not So Shiny New Octopress Blog! &raquo;</a>
       
     </p>
   </footer>
@@ -312,8 +308,8 @@ For some more elegant solutions, see the following:</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.nickshemonsky.com/2014/10/22/python-switchcase-statements/';
-        var disqus_url = 'http://blog.nickshemonsky.com/2014/10/22/python-switchcase-statements/';
+        var disqus_identifier = 'http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog/';
+        var disqus_url = 'http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog/';
         var disqus_script = 'embed.js';
       
     (function () {

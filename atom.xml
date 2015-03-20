@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Nick Shemonsky's Blog]]></title>
+  <title><![CDATA[Nick Shemonsky]]></title>
   <link href="http://blog.nickshemonsky.com/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-03-02T12:40:49-05:00</updated>
+  <updated>2015-03-20T10:35:01-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Not So Shiny New Octopress Blog!]]></title>
+    <link href="http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog/"/>
+    <updated>2015-03-20T10:25:07-04:00</updated>
+    <id>http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog</id>
+    <content type="html"><![CDATA[<p>After much neglect, I am resurrecting my blog. It&rsquo;s been long overdue and after
+reading some inspirational posts elsewhere on the Internets, specifically
+<a href="http://beero.ps/2015/02/08/on-blogging/">On Blogging</a> by <a href="https://twitter.com/beerops">beerops</a>. I&rsquo;ve decided it was time.</p>
+
+<p>In this reincarnation, I&rsquo;ve switched from Wordpress to <a href="https://github.com/imathis/octopress">Octopress</a>, mostly to
+simplify the posting process. With that decision came moving away from my
+previous hosting provider as well. Both my main landing page of
+<a href="http://www.nickshemonsky.com">www.nickshemonsky.com</a> and <a href="http://blog.nickshemonsky.com">blog.nickshemonsky.com</a> are now hosted
+on github-pages.</p>
+
+<p>As originally intended, this blog will serve a few purposes.</p>
+
+<ol>
+<li>As a technical reference. Googling always works but sometimes I just need a
+place to take a quick note. Hopefully, these help someone else out down the
+line.</li>
+<li>As a public roadmap for mostly professional goings-on.</li>
+<li>As a place to comment on beers I&rsquo;ve sampled. At this point, I&rsquo;m well over
+500 and would like to start documenting my thoughts on what I&rsquo;ve tasted. If
+you&rsquo;re on <a href="https://untappd.com/user/nshemonsky">Untappd</a>, add me as a friend!</li>
+<li>As a place to rant, rave and offer commentary on whatever happens to be on my
+mind.</li>
+</ol>
+
+
+<p>With the interest of #1 in mind from the list from above, I wanted to share the
+few quick mods I made to the Octopress configuration.</p>
+
+<h3>Removing the rss subscription icon</h3>
+
+<p>First, modify <code>_config.yml</code> removing <code>/atom.xml</code> from the the subscribe_rss
+line.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># RSS / Email (optional) subscription links (change if using something like Feedburner)
+</span><span class='line'>subscribe_rss:
+</span><span class='line'>subscribe_email:
+</span><span class='line'># RSS feeds can list your email address if you like
+</span><span class='line'>email:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then modify <code>source/_includes/navigation.html</code> to conditionally include/exclude
+the rss icon.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if site.subscribe_rss %}
+</span><span class='line'>  &lt;ul class="subscribe" data-subscription="rss{% if site.subscribe_email %} email{% endif %}"&gt;
+</span><span class='line'>    ...
+</span><span class='line'>  &lt;/ul&gt;
+</span><span class='line'>{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Modifying the date format for posts</h3>
+
+<p>The date format for posts can be adjusted via <code>source/_includes/post/date.html</code>.
+I prefer to not have the time listed for posts.</p>
+
+<p>Original:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if page.date %}{% capture time %}{{ page.date_time_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.date %}{% capture time %}{{ post.date_time_html }}{% endcapture %}{% endif %}
+</span><span class='line'>
+</span><span class='line'>{% if page.updated %}{% capture updated %}{{ page.date_time_updated_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.updated %}{% capture updated %}{{ post.date_time_updated_html }}{% endcapture %}{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Modified:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% if page.date %}{% capture time %}{{ page.date_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.date %}{% capture time %}{{ post.date_html }}{% endcapture %}{% endif %}
+</span><span class='line'>
+</span><span class='line'>{% if page.updated %}{% capture updated %}{{ page.date_updated_html }}{% endcapture %}{% endif %}
+</span><span class='line'>{% if post.updated %}{% capture updated %}{{ post.date_updated_html }}{% endcapture %}{% endif %}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For additional date formatting options see: <a href="https://github.com/octopress/date-format">https://github.com/octopress/date-format</a></p>
+
+<h3>Removing the simple_search bar</h3>
+
+<p>The simple_search is controlled by the
+<code>{% if site.simple_search %}{% endif %}</code>  conditional in
+<code>source/_includes/navigation.html</code>.</p>
+
+<p>Removing the url from the simple_search field in <code>_config.yml</code> will remove the
+search bar.</p>
+
+<h3>Removing the default /blog directory</h3>
+
+<p>Octopress deploys archives to <code>/blog</code> by default. It can be removed using these
+steps:</p>
+
+<ul>
+<li>Replace all occurences of <code>/blog</code> with <code>/</code> in <code>_config.yml</code></li>
+<li>Move <code>source/blog/archives</code> to <code>source/</code></li>
+<li>Delete <code>/blog</code></li>
+<li>Edit <code>source/_includes/custom/navigation.html</code>, replacing <code>/blog/archives</code> with <code>/archives</code></li>
+<li>Edit <code>source/index.html</code>, replacing <code>/blog/archives</code> with <code>/archives</code></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python Switch/case Statements]]></title>
