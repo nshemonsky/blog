@@ -3,7 +3,7 @@ layout: post
 title: "Not So Shiny New Octopress Blog!"
 date: 2015-03-20 10:25:07 -0400
 comments: true
-categories: meta, octopress
+categories: [meta, octopress]
 ---
 
 After much neglect, I am resurrecting my blog. It's been long overdue and after
@@ -99,8 +99,8 @@ search bar.
 
 ### Removing the default /blog directory
 
-Octopress deploys archives to `/blog` by default. It can be removed using these
-steps:
+Octopress deploys archives and categories  to `/blog` by default. It can be
+removed using these steps:
 
 * Replace all occurences of `/blog` with `/` in `_config.yml`
 * Move `source/blog/archives` to `source/` 
