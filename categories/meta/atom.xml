@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meta, | Nick Shemonsky]]></title>
   <link href="http://blog.nickshemonsky.com/categories/meta/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-03-20T10:51:00-04:00</updated>
+  <updated>2015-03-20T12:02:16-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.nickshemonsky.com/2015/03/20/not-so-shiny-new-octopress-blog</id>
     <content type="html"><![CDATA[<p>After much neglect, I am resurrecting my blog. It&rsquo;s been long overdue and after
 reading some inspirational posts elsewhere on the Internets, specifically
-<a href="http://beero.ps/2015/02/08/on-blogging/">On Blogging</a> by <a href="https://twitter.com/beerops">beerops</a>. I&rsquo;ve decided it was time.</p>
+<a href="http://beero.ps/2015/02/08/on-blogging/">On Blogging</a> by <a href="https://twitter.com/beerops">beerops</a>, I&rsquo;ve decided it was time.</p>
 
 <p>In this reincarnation, I&rsquo;ve switched from Wordpress to <a href="https://github.com/imathis/octopress">Octopress</a>, mostly to
 simplify the posting process. With that decision came moving away from my
