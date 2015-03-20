@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meta | Nick Shemonsky]]></title>
   <link href="http://blog.nickshemonsky.com/categories/meta/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-03-20T12:03:59-04:00</updated>
+  <updated>2015-03-20T12:06:57-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -119,8 +119,8 @@ search bar.</p>
 
 <h3>Removing the default /blog directory</h3>
 
-<p>Octopress deploys archives to <code>/blog</code> by default. It can be removed using these
-steps:</p>
+<p>Octopress deploys archives and categories  to <code>/blog</code> by default. It can be
+removed using these steps:</p>
 
 <ul>
 <li>Replace all occurences of <code>/blog</code> with <code>/</code> in <code>_config.yml</code></li>
