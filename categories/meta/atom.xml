@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Meta Octopress | Nick Shemonsky]]></title>
-  <link href="http://blog.nickshemonsky.com/categories/meta-octopress/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Meta | Nick Shemonsky]]></title>
+  <link href="http://blog.nickshemonsky.com/categories/meta/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-03-20T12:08:15-04:00</updated>
+  <updated>2015-03-20T12:09:12-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
