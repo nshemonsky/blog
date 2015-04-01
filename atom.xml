@@ -4,7 +4,7 @@
   <title><![CDATA[Nick Shemonsky]]></title>
   <link href="http://blog.nickshemonsky.com/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-03-20T12:09:12-04:00</updated>
+  <updated>2015-04-01T16:38:11-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing a Previous Git Commit]]></title>
+    <link href="http://blog.nickshemonsky.com/2015/04/01/fixing-a-previous-git-commit/"/>
+    <updated>2015-04-01T15:58:49-04:00</updated>
+    <id>http://blog.nickshemonsky.com/2015/04/01/fixing-a-previous-git-commit</id>
+    <content type="html"><![CDATA[<p>Have you ever been hammering out some code, making commits, only to realize
+you&rsquo;ve botched something up a few commits ago? Happens to me quite often and
+I just realized there is an easy way to fix it via an interactive rebase.</p>
+
+<p>As long as you haven&rsquo;t pushed your commits upstream, follow these steps and
+you&rsquo;ll be golden. If you have pushed, just make your fix in a new commit
+because the steps below will result in a new sha being generated for the commit
+you&rsquo;re modifying.</p>
+
+<ol>
+<li>Save or stash your existing work.</li>
+<li>Use <code>git log</code> to find the first few characters of the ID of the commit
+you&rsquo;d like to edit.</li>
+<li>Begin the interactive rebase by running <code>git rebase -i ID^</code>.</li>
+<li>Find your commit in the list you&rsquo;ve been presented and change the word
+&lsquo;pick&rsquo; to &lsquo;edit&rsquo;. Save and quit the editor.</li>
+<li>Make the necessary changes to your files.</li>
+<li>Run <code>git commit -a --amend</code>.</li>
+<li>Proceed with the rebase by running <code>git rebase --continue</code>.</li>
+<li>Resolve any conflicts created by your new changes.</li>
+<li>Re-apply any stashed changes.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Not So Shiny New Octopress Blog!]]></title>
