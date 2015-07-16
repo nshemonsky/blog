@@ -4,7 +4,7 @@
   <title><![CDATA[Nick Shemonsky]]></title>
   <link href="http://blog.nickshemonsky.com/atom.xml" rel="self"/>
   <link href="http://blog.nickshemonsky.com/"/>
-  <updated>2015-07-16T09:58:58-04:00</updated>
+  <updated>2015-07-16T10:22:45-04:00</updated>
   <id>http://blog.nickshemonsky.com/</id>
   <author>
     <name><![CDATA[Nick Shemonsky]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[DevOpsDays NYC 2015]]></title>
-    <link href="http://blog.nickshemonsky.com/2015/05/01/devopsdays-nyc-2015/"/>
-    <updated>2015-05-01T08:13:45-04:00</updated>
-    <id>http://blog.nickshemonsky.com/2015/05/01/devopsdays-nyc-2015</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fixing a Previous Git Commit]]></title>
